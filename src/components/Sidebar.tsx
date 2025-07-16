@@ -56,7 +56,6 @@ const navigation = [
 export default function Sidebar() {
   const location = useLocation();
   const { user, logout } = useAuth();
-  const [defaultOpenItems] = useState(['operações', 'ambiente', 'sistema']);
 
   return (
     <header className="bg-card border-b border-border shadow-sm">
@@ -76,7 +75,6 @@ export default function Sidebar() {
         <nav className="flex-1 mx-8">
           <Accordion 
             type="multiple" 
-            defaultValue={defaultOpenItems}
             className="flex items-center space-x-4"
           >
             {navigation.map((item) => {
