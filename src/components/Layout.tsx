@@ -11,11 +11,9 @@ export default function Layout({ children }: LayoutProps) {
     <div className="min-h-screen bg-background wave-pattern">
       <Sidebar />
       
-      <div className="ml-64">
-        <main className="min-h-screen p-4 lg:p-8">
-          {children}
-        </main>
-      </div>
+      <main className="min-h-screen p-4 lg:p-8">
+        {children}
+      </main>
     </div>
   );
 }

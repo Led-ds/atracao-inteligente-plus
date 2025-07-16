@@ -59,27 +59,25 @@ export default function Sidebar() {
   const [defaultOpenItems] = useState(['operações', 'ambiente', 'sistema']);
 
   return (
-    <div className="fixed left-0 top-0 h-full w-64 bg-card border-r border-border z-40">
-      <div className="flex flex-col h-full">
-        {/* Header */}
-        <div className="p-6 border-b border-border">
-          <div className="flex items-center space-x-3">
-            <div className="p-2 bg-primary rounded-lg">
-              <Anchor className="h-6 w-6 text-primary-foreground" />
-            </div>
-            <div>
-              <h1 className="text-xl font-bold text-foreground">Atraca+</h1>
-              <p className="text-sm text-muted-foreground">Gestão Portuária</p>
-            </div>
+    <header className="bg-card border-b border-border shadow-sm">
+      <div className="flex items-center justify-between h-16 px-6">
+        {/* Logo */}
+        <div className="flex items-center space-x-3">
+          <div className="p-2 bg-primary rounded-lg">
+            <Anchor className="h-6 w-6 text-primary-foreground" />
+          </div>
+          <div>
+            <h1 className="text-xl font-bold text-foreground">Atraca+</h1>
+            <p className="text-xs text-muted-foreground">Gestão Portuária</p>
           </div>
         </div>
 
-        {/* Navigation with Accordion */}
-        <nav className="flex-1 p-4">
+        {/* Navigation */}
+        <nav className="flex-1 mx-8">
           <Accordion 
             type="multiple" 
             defaultValue={defaultOpenItems}
-            className="space-y-2"
+            className="flex items-center space-x-4"
           >
             {navigation.map((item) => {
               if (item.children && item.children.length > 0) {
@@ -87,16 +85,16 @@ export default function Sidebar() {
                   <AccordionItem 
                     key={item.name} 
                     value={item.name.toLowerCase()}
-                    className="border-none"
+                    className="border-none relative"
                   >
-                    <AccordionTrigger className="flex items-center space-x-3 px-3 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent hover:no-underline">
-                      <div className="flex items-center space-x-3">
-                        <item.icon className="h-5 w-5" />
+                    <AccordionTrigger className="flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent hover:no-underline">
+                      <div className="flex items-center space-x-2">
+                        <item.icon className="h-4 w-4" />
                         <span>{item.name}</span>
                       </div>
                     </AccordionTrigger>
-                    <AccordionContent className="pb-0">
-                      <div className="ml-4 space-y-1">
+                    <AccordionContent className="absolute top-full left-0 mt-1 bg-card border border-border rounded-lg shadow-lg z-50 min-w-48">
+                      <div className="p-2 space-y-1">
                         {item.children.map((child) => {
                           const isActive = location.pathname === child.href;
                           return (
@@ -104,7 +102,7 @@ export default function Sidebar() {
                               key={child.name}
                               to={child.href}
                               className={cn(
-                                "flex items-center space-x-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200",
+                                "flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200",
                                 isActive 
                                   ? "bg-primary text-primary-foreground" 
                                   : "text-muted-foreground hover:text-foreground hover:bg-accent"
@@ -126,13 +124,13 @@ export default function Sidebar() {
                     <NavLink
                       to={item.href}
                       className={cn(
-                        "flex items-center space-x-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200",
+                        "flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200",
                         isActive 
                           ? "bg-primary text-primary-foreground" 
                           : "text-muted-foreground hover:text-foreground hover:bg-accent"
                       )}
                     >
-                      <item.icon className="h-5 w-5" />
+                      <item.icon className="h-4 w-4" />
                       <span>{item.name}</span>
                     </NavLink>
                   </div>
@@ -143,7 +141,7 @@ export default function Sidebar() {
         </nav>
 
         {/* User Area */}
-        <div className="p-4 border-t border-border space-y-2">
+        <div className="flex items-center space-x-4">
           <div className="flex items-center space-x-3 px-3 py-2 rounded-lg bg-accent">
             <div className="p-1 bg-primary rounded-full">
               <User className="h-4 w-4 text-primary-foreground" />
@@ -160,20 +158,13 @@ export default function Sidebar() {
           
           <button 
             onClick={logout}
-            className="flex items-center space-x-3 px-3 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent w-full transition-colors duration-200"
+            className="flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent transition-colors duration-200"
           >
             <LogOut className="h-4 w-4" />
             <span>Sair</span>
           </button>
         </div>
-
-        {/* Footer */}
-        <div className="p-4 border-t border-border">
-          <div className="text-xs text-muted-foreground text-center">
-            v1.0.0 • MVP
-          </div>
-        </div>
       </div>
-    </div>
+    </header>
   );
 }
