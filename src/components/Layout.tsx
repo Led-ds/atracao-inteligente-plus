@@ -8,10 +8,10 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <div className="min-h-screen bg-background wave-pattern">
+    <div className="min-h-screen bg-background wave-pattern flex">
       <Sidebar />
       
-      <main className="p-4 lg:p-8">
+      <main className="flex-1 p-4 lg:p-8">
         {children}
       </main>
     </div>
