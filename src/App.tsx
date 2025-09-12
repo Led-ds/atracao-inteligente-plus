@@ -9,6 +9,7 @@ import { AuthProvider, useAuth } from "@/contexts/AuthContext";
 import LoginForm from "@/components/LoginForm";
 import Layout from "@/components/Layout";
 import Index from "./pages/Index";
+import Schedule from "./pages/Schedule";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -43,7 +44,7 @@ function AppContent() {
       <Routes>
         <Route path="/" element={<Index />} />
         {/* Placeholder routes for future implementation */}
-        <Route path="/schedule" element={<div className="p-8"><h1>Agendamentos</h1><p>Em desenvolvimento...</p></div>} />
+        <Route path="/schedule" element={<Schedule />} />
         <Route path="/vessels" element={<div className="p-8"><h1>Embarcações</h1><p>Em desenvolvimento...</p></div>} />
         <Route path="/dock" element={<div className="p-8"><h1>Gestão do Cais</h1><p>Em desenvolvimento...</p></div>} />
         <Route path="/weather" element={<div className="p-8"><h1>Maré & Clima</h1><p>Em desenvolvimento...</p></div>} />
