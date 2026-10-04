@@ -10,6 +10,8 @@ import LoginForm from "@/components/LoginForm";
 import Layout from "@/components/Layout";
 import Index from "./pages/Index";
 import Schedule from "./pages/Schedule";
+import PortCalls from "./pages/PortCalls";
+import PortCallDetail from "./pages/PortCallDetail";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -44,6 +46,8 @@ function AppContent() {
       <Routes>
         <Route path="/" element={<Index />} />
         {/* Placeholder routes for future implementation */}
+        <Route path="/port-calls" element={<PortCalls />} />
+        <Route path="/port-calls/:id" element={<PortCallDetail />} />
         <Route path="/schedule" element={<Schedule />} />
         <Route path="/vessels" element={<div className="p-8"><h1>Embarcações</h1><p>Em desenvolvimento...</p></div>} />
         <Route path="/dock" element={<div className="p-8"><h1>Gestão do Cais</h1><p>Em desenvolvimento...</p></div>} />
