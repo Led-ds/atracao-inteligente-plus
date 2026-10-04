@@ -10,7 +10,8 @@ import {
   Waves,
   MapPin,
   User,
-  LogOut
+  LogOut,
+  ClipboardList
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import {
@@ -32,6 +33,7 @@ const navigation = [
     name: 'Operações', 
     icon: Ship,
     children: [
+      { name: 'Escalas', href: '/port-calls', icon: ClipboardList },
       { name: 'Agendamentos', href: '/schedule', icon: Calendar },
       { name: 'Embarcações', href: '/vessels', icon: Ship },
       { name: 'Cais', href: '/dock', icon: MapPin }
