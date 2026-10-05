@@ -34,9 +34,15 @@ const navigation = [
     icon: Ship,
     children: [
       { name: 'Escalas', href: '/port-calls', icon: ClipboardList },
-      { name: 'Agendamentos', href: '/schedule', icon: Calendar },
-      { name: 'Embarcações', href: '/vessels', icon: Ship },
-      { name: 'Cais', href: '/dock', icon: MapPin }
+      { name: 'Planejamento', href: '/planning', icon: Calendar },
+      { name: 'Embarcações', href: '/vessels', icon: Ship }
+    ]
+  },
+  { 
+    name: 'Infraestrutura', 
+    icon: MapPin,
+    children: [
+      { name: 'Estrutura Portuária', href: '/infrastructure', icon: MapPin }
     ]
   },
   { 
@@ -98,7 +104,7 @@ export default function Sidebar() {
                     <AccordionContent className="pb-0">
                       <div className="ml-4 space-y-1">
                         {item.children.map((child) => {
-                          const isActive = location.pathname === child.href;
+                          const isActive = location.pathname === child.href || location.pathname.startsWith(child.href + '/');
                           return (
                             <NavLink
                               key={child.name}
